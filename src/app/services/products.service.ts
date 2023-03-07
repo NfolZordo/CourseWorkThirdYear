@@ -15,7 +15,7 @@ export class ProductsService {
     getAll(): Observable<IProduct[]> {
         return this.http.get<IProduct[]>('https://fakestoreapi.com/products', {
             params: new HttpParams({
-                fromObject: {limit:5}
+                fromObject: {limit:20}
             })
         }).pipe(
             retry(2),
