@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IProduct } from './models/product';
-import { ProductsService } from './services/products.service';
 import { Observable, tap } from 'rxjs';
+import { ToursService } from './services/tour.service';
+import { ITour } from './models/tour';
 
 @Component({
   selector: 'app-root',
@@ -12,14 +12,14 @@ export class AppComponent implements OnInit {
   title = 'Course Work Third Year';
   // products: IProduct[] = []
   loading = false
-  products$: Observable<IProduct[]>
+  tours$: Observable<ITour[]>
   term = ''
-  constructor(private productsService: ProductsService) {
+  constructor(private toursService: ToursService) {
   }
 
   ngOnInit(): void {
     this.loading = true
-    this.products$ = this.productsService.getAll().pipe(
+    this.tours$ = this.toursService.getAll().pipe(
       tap(()=> this.loading = false)
     )
     // this.productsService.getAll().subscribe(products => {

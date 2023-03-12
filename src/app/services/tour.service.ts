@@ -1,19 +1,19 @@
 import { Injectable } from "@angular/core";
 import {HttpClient, HttpErrorResponse, HttpParams} from '@angular/common/http'
 import { Observable, catchError, retry, throwError} from "rxjs";
-import { IProduct } from "../models/product";
 import { ErrorService } from "./error.service";
+import { ITour } from "../models/tour";
 
 @Injectable({
     providedIn: 'root'
 })
-export class ProductsService {
+export class ToursService {
     constructor(private http: HttpClient,
         private errorService: ErrorService
         ) {
     }
-    getAll(): Observable<IProduct[]> {
-        return this.http.get<IProduct[]>('https://fakestoreapi.com/products', {
+    getAll(): Observable<ITour[]> {
+        return this.http.get<ITour[]>('http://localhost:8080/getAllTours', {
             params: new HttpParams({
                 fromObject: {limit:20}
             })

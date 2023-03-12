@@ -1,16 +1,17 @@
 <app-global-error></app-global-error>
 <div class="max-w-2xl container, mx-auto pt-5">
-  <h1 class="font-bold mb-2 text-center text-lg">{{title}}</h1>
-  <input type="text" class="mb-2 border py-2px-4 w-full" placeholder="Filter products..." [(ngModel)]="term">
+  <!-- <h1 class="font-bold mb-2 text-center text-lg">{{title}}</h1> -->
+  <!-- <input type="text" class="mb-2 border py-2px-4 w-full" placeholder="Filter products..." [(ngModel)]="term"> -->
 
   <!-- <app-product [product]="products[0]"></app-product>
   <app-product [product]="products[1]"></app-product> -->
   <p *ngIf="loading" class="text-center text-lg ">Loading</p>
 
-  <div *ngIf="products$ | async as products"> 
-    <app-product *ngFor="let product of products | filterProducts:term; let i = index" [product]="product"></app-product>
+  <div *ngIf="tours$ | async as tours"> 
+    <app-product *ngFor="let tour of tours; let i = index" [tour]="tour"></app-product>
   </div>
-  <app-modal title= "Create new product">
+
+  <!-- <app-modal title= "Create new product">
     <app-create-product></app-create-product>
-  </app-modal>
+  </app-modal> -->
 </div>
