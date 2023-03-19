@@ -4,13 +4,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ProductComponent } from './components/product/product.component';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { GlobalErrorComponent } from './components/global-error/global-error.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
 import { CreateProductComponent } from './components/create-product/create-product.component';
 import { LoginComponent } from './components/login/login.component';
-
+import { AuthInterceptor } from './components/authorization/auth-interceptor';
+import { HeaderComponent } from './components/header/header.component';
+import { RegistComponent } from './components/regist/regist.component';
+import { PersonalComponent } from './components/personal/personal.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +21,10 @@ import { LoginComponent } from './components/login/login.component';
     GlobalErrorComponent,
     ModalComponent,
     CreateProductComponent,
-    LoginComponent
+    LoginComponent,
+    HeaderComponent,
+    RegistComponent,
+    PersonalComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +33,11 @@ import { LoginComponent } from './components/login/login.component';
     FormsModule,
     ReactiveFormsModule
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
  

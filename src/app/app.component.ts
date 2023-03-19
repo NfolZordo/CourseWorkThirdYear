@@ -9,7 +9,7 @@ import { ITour } from './models/tour';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Course Work Third Year';
+  modalHeading = '';
   // products: IProduct[] = []
   loading = false
   tours$: Observable<ITour[]>
@@ -17,15 +17,24 @@ export class AppComponent implements OnInit {
   constructor(private toursService: ToursService) {
   }
 
+  openModal() {
+    this.modalHeading="Авторизація"
+  }
+  openRegistModal() {
+    this.modalHeading="Регістрація"
+  }
+  openPersonalModal() {
+    this.modalHeading="Особистий кабінет"
+  }
+
+  closeModal() {
+    this.modalHeading = '';
+  }
   ngOnInit(): void {
     this.loading = true
     this.tours$ = this.toursService.getAll().pipe(
       tap(()=> this.loading = false)
     )
-    // this.productsService.getAll().subscribe(products => {
-    //   this.products = products
-    //   this.loading = false
-    // })
   }
 
 

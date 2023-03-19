@@ -1,0 +1,15 @@
+<header class="header">
+    <div class="logo">Логотип</div>
+    <nav class="nav">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="#" class="nav__link">Головна</a></li>
+        <li class="nav__item"><a href="#" class="nav__link">Тури</a></li>
+        <li class="nav__item"><a href="#" class="nav__link">Контакти</a></li>
+      </ul>
+    </nav>
+    <div class="buttons">
+      <button *ngIf="!autorized" class="button button--login" (click)="openLoginModal()">Авторизація</button>
+      <button *ngIf="!autorized" class="button button--register" (click)="openRegistrationModal()">Реєстрація</button>
+      <button *ngIf="autorized" class="button button--register" (click)="openPersonalModal()">Особистий кабінет</button>
+    </div>
+  </header>

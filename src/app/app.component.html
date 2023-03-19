@@ -1,17 +1,14 @@
+<app-header (loginClicked)="openModal()"  (registClicked)="openRegistModal()"></app-header>
 <app-global-error></app-global-error>
 <div class="max-w-2xl container, mx-auto pt-5">
-  <!-- <h1 class="font-bold mb-2 text-center text-lg">{{title}}</h1> -->
-  <!-- <input type="text" class="mb-2 border py-2px-4 w-full" placeholder="Filter products..." [(ngModel)]="term"> -->
-
-  <!-- <app-product [product]="products[0]"></app-product>
-  <app-product [product]="products[1]"></app-product> -->
   <p *ngIf="loading" class="text-center text-lg ">Loading</p>
 
   <div *ngIf="tours$ | async as tours"> 
     <app-product *ngFor="let tour of tours; let i = index" [tour]="tour"></app-product>
   </div>
 
-   <app-modal title="Авторизація" >
-    <app-login></app-login>
+   <app-modal (closeClicked)="closeModal()" *ngIf="modalHeading !== '' " [title]="modalHeading" >
+    <app-login *ngIf="modalHeading === 'Авторизація'"></app-login>
+    <app-regist *ngIf="modalHeading === 'Регістрація'"></app-regist>
   </app-modal> 
 </div>

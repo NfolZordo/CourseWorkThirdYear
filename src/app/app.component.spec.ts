@@ -23,7 +23,7 @@ describe('AppComponent', () => {
   it(`should have as title 'CourseWorkThirdYear'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('CourseWorkThirdYear');
+    expect(app.modalHeading).toEqual('CourseWorkThirdYear');
   });
 
   it('should render title', () => {

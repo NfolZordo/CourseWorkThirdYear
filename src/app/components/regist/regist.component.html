@@ -1,0 +1,27 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+    <input type="text" class="border w-full py-2 px-4 mb-2"
+    placeholder="firstname" formControlName="firstname">
+
+    <input type="text" class="border w-full py-2 px-4 mb-2"
+    placeholder="lastname" formControlName="lastname">
+
+    <input type="text" class="border w-full py-2 px-4 mb-2"
+    placeholder="email" formControlName="email">
+
+    <input type="text" class="border w-full py-2 px-4 mb-2"
+    placeholder="password" formControlName="password">
+
+    <input type="text" class="border w-full py-2 px-4 mb-2"
+    placeholder="repit rassword" formControlName="repitPassword">
+
+    <p class="text-red-600 font-medium mb-2"
+    *ngIf="email.errors?.minlength && email.touched"
+    >Логін має бути більше шести символів</p>
+    
+    <p class="text-red-600 font-medium mb-2"
+    *ngIf="password.errors?.minlength && password.touched"
+    >Пароль має бути більше шести символів</p>
+    
+    <button class="py-2 px-4 bg-blue-600 text-white"
+    type="submit">Submit</button>
+    </form>

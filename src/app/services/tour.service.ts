@@ -13,7 +13,7 @@ export class ToursService {
         ) {
     }
     getAll(): Observable<ITour[]> {
-        return this.http.get<ITour[]>('http://localhost:8080/getAllTours', {
+        return this.http.get<ITour[]>('http://localhost:8080/api/info/getAllTours', {
             params: new HttpParams({
                 fromObject: {limit:20}
             })

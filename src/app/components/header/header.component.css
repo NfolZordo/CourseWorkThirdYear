@@ -1,0 +1,72 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background-color: #fff;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .header:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #2bb180;
+  }
+  
+  .nav__list {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav__item {
+    margin-left: 1rem;
+  }
+  
+  .nav__link {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #4B5563;
+    text-decoration: none;
+  }
+  
+  .button {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #2bb180;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .button:hover {
+    background-color: #28a76f;
+  }
+  
+  .button--login {
+    background-color: #4B5563;
+    margin-right: 1rem;
+  }
+  
+  .button--login:hover {
+    background-color: #374151;
+  }
+  
+  .button--register {
+    background-color: #2bb180;
+  }
+  
+  .button--register:hover {
+    background-color: #28a76f;
+  }
