@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../authorization/auth-service';
 import { ResponseData } from '../authorization/token-response';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-login',
@@ -31,20 +32,26 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  constructor(private http:HttpClient, private authService: AuthService) { }
+  constructor(private http:HttpClient, private authService: AuthService, private modalComponent:ModalComponent) { }
 
   submit() {
     if (this.form.valid) {
       const data = this.form.value;
-
+      console.log(data);
       this.http.post<ResponseData>('http://localhost:8080/api/auth/authenticate',data,).subscribe (response => {
+        console.log("*** Login ***");
         console.log(response);
+        console.log("*** token ***");
+        console.log(response.token);
         const token = response.token;
         this.authService.setToken(token);
+        this.modalComponent.closeClicked.emit();
+
       });
   }
     // console.log(this.form.value)
-  
+    // this.authService.checkAuthorized()
+
   }
 }
 // interface ResponseData {
@@ -58,7 +65,7 @@ export class LoginComponent implements OnInit {
 //     const headers = { 
 //       'Authorization': 'Bearer ' + this.authService.getToken()
 //     };
-//     this.http.post('http://localhost:8080/api/v1/auth/authenticate',data,{headers}).subscribe (response => {
+//     this.http.post('http://localhost:8080/api/auth/authenticate',data,{headers}).subscribe (response => {
 //       console.log(response);
 //     });
 //   }

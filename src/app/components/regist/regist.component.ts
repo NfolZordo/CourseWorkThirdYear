@@ -22,6 +22,8 @@ export class RegistComponent implements OnInit {
         Validators.required,
         Validators.minLength(6)
       ]),
+      repitPassword: new FormControl<string>(''),
+
     })
   
     get firstname() {
@@ -36,7 +38,9 @@ export class RegistComponent implements OnInit {
     get password() {
       return this.form.controls.password as FormControl
     }
-  
+    get repitPassword() {
+      return this.form.controls.repitPassword as FormControl
+    }
     ngOnInit(): void {
     }
     constructor(private http:HttpClient, private authService: AuthService) { }

@@ -1,4 +1,6 @@
-<app-header (loginClicked)="openModal()"  (registClicked)="openRegistModal()"></app-header>
+<app-header (loginClicked)="openModal()" 
+(registClicked)="openRegistModal()"
+[autorized]="authorized"></app-header>
 <app-global-error></app-global-error>
 <div class="max-w-2xl container, mx-auto pt-5">
   <p *ngIf="loading" class="text-center text-lg ">Loading</p>

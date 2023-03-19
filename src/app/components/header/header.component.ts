@@ -1,20 +1,24 @@
-import { Component, Output, EventEmitter } from '@angular/core';
-import { AuthService } from '../authorization/auth-service';
-
+import { Component, Output, Input, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent  implements OnInit {
   @Output() loginClicked = new EventEmitter<void>();
   @Output() registClicked = new EventEmitter<void>();
   @Output() personalClicked = new EventEmitter<void>();
+  @Input() autorized:boolean;
 
-  autorized:boolean = false;
-  constructor(private authService: AuthService) { 
-    this.autorized = authService.checkAuthorized();
+  setAustrized(autorized: boolean) {
+    this.autorized = autorized;
+    console.log("*** setAustrized ***" + this.autorized)
+  }
+
+  constructor() { 
+  }
+  ngOnInit(): void {
   }
   
   openLoginModal() {

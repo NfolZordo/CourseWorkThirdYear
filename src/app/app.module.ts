@@ -14,6 +14,7 @@ import { AuthInterceptor } from './components/authorization/auth-interceptor';
 import { HeaderComponent } from './components/header/header.component';
 import { RegistComponent } from './components/regist/regist.component';
 import { PersonalComponent } from './components/personal/personal.component';
+import { AuthService } from './components/authorization/auth-service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,6 +36,7 @@ import { PersonalComponent } from './components/personal/personal.component';
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+     HeaderComponent
   ],
   bootstrap: [AppComponent],
   
