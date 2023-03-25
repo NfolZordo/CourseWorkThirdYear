@@ -57,6 +57,7 @@
   .button--login {
     background-color: #4B5563;
     margin-right: 1rem;
+    margin-left: 1rem;
   }
   
   .button--login:hover {

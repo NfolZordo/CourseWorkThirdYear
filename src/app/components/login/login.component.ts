@@ -11,11 +11,11 @@ import { ModalComponent } from '../modal/modal.component';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
+  autorithError = false;
   form = new FormGroup({
     email: new FormControl<string>('',[
       Validators.required,
-      Validators.minLength(4)
+      Validators.email
     ]),
     password: new FormControl<string>('',[
       Validators.required,
@@ -39,15 +39,11 @@ export class LoginComponent implements OnInit {
       const data = this.form.value;
       console.log(data);
       this.http.post<ResponseData>('http://localhost:8080/api/auth/authenticate',data,).subscribe (response => {
-        console.log("*** Login ***");
-        console.log(response);
-        console.log("*** token ***");
-        console.log(response.token);
         const token = response.token;
         this.authService.setToken(token);
         this.modalComponent.closeClicked.emit();
-
       });
+      this.autorithError = true;
   }
     // console.log(this.form.value)
     // this.authService.checkAuthorized()

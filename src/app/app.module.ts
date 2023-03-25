@@ -8,7 +8,6 @@ import { HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { GlobalErrorComponent } from './components/global-error/global-error.component'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ModalComponent } from './components/modal/modal.component';
-import { CreateProductComponent } from './components/create-product/create-product.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthInterceptor } from './components/authorization/auth-interceptor';
 import { HeaderComponent } from './components/header/header.component';
@@ -21,7 +20,6 @@ import { AuthService } from './components/authorization/auth-service';
     ProductComponent,
     GlobalErrorComponent,
     ModalComponent,
-    CreateProductComponent,
     LoginComponent,
     HeaderComponent,
     RegistComponent,
@@ -35,7 +33,6 @@ import { AuthService } from './components/authorization/auth-service';
     ReactiveFormsModule
   ],
   providers: [
-    // { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
      HeaderComponent
   ],
   bootstrap: [AppComponent],

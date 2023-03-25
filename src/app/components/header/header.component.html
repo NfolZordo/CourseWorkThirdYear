@@ -8,8 +8,9 @@
       </ul>
     </nav>
     <div class="buttons">
-      <button *ngIf="!autorized" class="button button--login" (click)="openLoginModal()">Авторизація</button>
-      <button *ngIf="!autorized" class="button button--register" (click)="openRegistrationModal()">Реєстрація</button>
-      <button *ngIf="autorized" class="button button--register" (click)="openPersonalModal()">Особистий кабінет</button>
+      <button *ngIf="!(authorized | async)" class="button button--login" (click)="openLoginModal()">Авторизація</button>
+      <button *ngIf="!(authorized | async)" class="button button--register" (click)="openRegistrationModal()">Реєстрація</button>
+      <button *ngIf="(authorized | async)" class="button button--register" (click)="openPersonalModal()">Особистий кабінет</button>
+      <button *ngIf="(authorized | async)" class="button button--login" (click)="singOut()">Вихід</button>
     </div>
   </header>

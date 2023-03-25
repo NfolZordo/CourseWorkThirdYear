@@ -1,5 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter  } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
+import { AuthService } from '../authorization/auth-service';
 
 @Component({
   selector: 'app-modal',
@@ -11,13 +12,11 @@ export class ModalComponent implements OnInit {
   ngOnInit(): void {
   }
   @Output() closeClicked = new EventEmitter<void>();
-  headerComponent: HeaderComponent;
-  constructor(headerComponent:HeaderComponent) {
-    this.headerComponent = headerComponent;
+  constructor(headerComponent:HeaderComponent, private authService:AuthService) {
   }
 
   closeModal() {
     this.closeClicked.emit();
-    this.headerComponent.setAustrized(true);
+    this.authService.checkAuthorized()
   }
 }

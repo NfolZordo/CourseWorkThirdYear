@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../authorization/auth-service';
 import { ResponseData } from '../authorization/token-response';
 
@@ -16,14 +16,24 @@ export class RegistComponent implements OnInit {
       lastname: new FormControl<string>(''),
       email: new FormControl<string>('',[
         Validators.required,
-        Validators.minLength(4)
+        Validators.email
       ]),
+      phoneNumber: new FormControl<string>(''),
       password: new FormControl<string>('',[
         Validators.required,
         Validators.minLength(6)
       ]),
-      repitPassword: new FormControl<string>(''),
 
+      repitPassword: new FormControl<string>('', [
+        (control: AbstractControl) => {
+          const password = control.root.get('password');
+          const repitPassword = control.value;
+          if (password && repitPassword && password.value !== repitPassword) {
+            return { passwordMismatch: true };
+          }
+          return null;
+        }
+      ])
     })
   
     get firstname() {
@@ -34,6 +44,9 @@ export class RegistComponent implements OnInit {
     }
     get email() {
       return this.form.controls.email as FormControl
+    }
+    get phoneNumber() {
+      return this.form.controls.phoneNumber as FormControl
     }
     get password() {
       return this.form.controls.password as FormControl

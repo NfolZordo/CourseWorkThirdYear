@@ -1,4 +1,6 @@
 import { Component, Output, Input, EventEmitter, OnInit } from '@angular/core';
+import { Subject } from 'rxjs';
+import { AuthService } from '../authorization/auth-service';
 
 @Component({
   selector: 'app-header',
@@ -9,14 +11,14 @@ export class HeaderComponent  implements OnInit {
   @Output() loginClicked = new EventEmitter<void>();
   @Output() registClicked = new EventEmitter<void>();
   @Output() personalClicked = new EventEmitter<void>();
-  @Input() autorized:boolean;
+  @Input() authorized = new Subject<boolean>();;
 
+  
   setAustrized(autorized: boolean) {
-    this.autorized = autorized;
-    console.log("*** setAustrized ***" + this.autorized)
+    this.authorized.next(autorized);
   }
 
-  constructor() { 
+  constructor(private authService:AuthService) { 
   }
   ngOnInit(): void {
   }
@@ -29,5 +31,12 @@ export class HeaderComponent  implements OnInit {
   }
   openPersonalModal() {
     this.personalClicked.emit();
+  }
+  singOut() {
+    this.authService.singOut();
+    this.authService.checkAuthorized()
+    .then(authorized => {
+      this.authorized.next(authorized);
+    });
   }
 }

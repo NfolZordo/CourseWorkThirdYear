@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable, tap } from 'rxjs';
+import { Observable, Subject, tap } from 'rxjs';
 import { ToursService } from './services/tour.service';
 import { ITour } from './models/tour';
 import { AuthService } from './components/authorization/auth-service';
@@ -11,19 +11,20 @@ import { AuthService } from './components/authorization/auth-service';
 })
 export class AppComponent implements OnInit {
   modalHeading = '';
-  authorized = false;
-  // products: IProduct[] = []
+  authorized = new Subject<boolean>();
   loading = false
   tours$: Observable<ITour[]>
   term = ''
-  constructor(private toursService: ToursService, private authService:AuthService) {
-    this.authorized = this.authService.checkAuthorized();
-    console.log("*** AppComponent constructor ***" + this.authorized)
-
+  constructor(private toursService: ToursService, private authService: AuthService) {
+    this.loading = true;
+    this.authService.checkAuthorized()
+      .then(authorized => {
+        this.authorized.next(authorized);
+      });
   }
-  public setAuthorized(authorized:boolean){
-    this.authorized = authorized;
-  }
+  // public setAuthorized(authorized:boolean){
+  //   this.authorized = authorized;
+  // }
 
   openModal() {
     this.modalHeading = "Авторизація"
@@ -36,10 +37,13 @@ export class AppComponent implements OnInit {
   }
 
   closeModal() {
-    console.log("*** closeModal() ***" + this.authorized);
     this.modalHeading = '';
-    this.authorized = this.authService.checkAuthorized();
-  }
+    this.authService.checkAuthorized()
+      .then(authorized => {
+        this.authorized.next(authorized);
+        this.loading = false;
+      });
+      }
   ngOnInit(): void {
     this.loading = true
     this.tours$ = this.toursService.getAll().pipe(
