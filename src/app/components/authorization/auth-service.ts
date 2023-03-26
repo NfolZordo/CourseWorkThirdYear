@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { UserData } from './user-response';
 
   @Injectable({
     providedIn: 'root'
@@ -10,34 +11,39 @@ import { HttpClient } from '@angular/common/http';
 
     private readonly TOKEN_KEY = 'my-app-token';
     private token: string;
-    private authorized = false;
+    private user: UserData;
 
+    private authorized = false;
     public setToken(token: string) {
       localStorage.setItem(this.TOKEN_KEY, token);
-      this.checkAuthorized()
+      this.checkUser()
     }
 
     public getToken(): string | null {
       return this.token || localStorage.getItem(this.TOKEN_KEY);
     }
+
     public getAuthorized(): boolean {
       return this.authorized;
     }
+
+    public getUserInfo(): UserData {
+      return this.user;
+    }
+
     public singOut() {
       this.setToken("");
       this.http.get('http://localhost:8080/api/auth/logout');
     }
-    public checkAuthorized(): Promise<boolean> {
+
+    public checkUser(): Promise<boolean> {
       const token = this.getToken();
-    
       if (!token) {
         return Promise.resolve(false);
       }
-    
       const headers = {
         'Authorization': 'Bearer ' + token
       };
-    
       const options = {
         headers: headers
       };
@@ -46,7 +52,7 @@ import { HttpClient } from '@angular/common/http';
         this.http.post('http://localhost:8080/api/auth/getUser', {}, options)
           .subscribe({
             next: (response) => {
-              console.log(response);
+              this.user = response as UserData;
               this.authorized = true;
               resolve(true);
             },

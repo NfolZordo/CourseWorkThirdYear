@@ -34,7 +34,7 @@ export class HeaderComponent  implements OnInit {
   }
   singOut() {
     this.authService.singOut();
-    this.authService.checkAuthorized()
+    this.authService.checkUser()
     .then(authorized => {
       this.authorized.next(authorized);
     });

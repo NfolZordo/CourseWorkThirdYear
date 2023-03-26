@@ -17,6 +17,6 @@ export class ModalComponent implements OnInit {
 
   closeModal() {
     this.closeClicked.emit();
-    this.authService.checkAuthorized()
+    this.authService.checkUser()
   }
 }

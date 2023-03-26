@@ -14,6 +14,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { RegistComponent } from './components/regist/regist.component';
 import { PersonalComponent } from './components/personal/personal.component';
 import { AuthService } from './components/authorization/auth-service';
+import { OfficeComponent } from './components/office/office.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { AuthService } from './components/authorization/auth-service';
     LoginComponent,
     HeaderComponent,
     RegistComponent,
-    PersonalComponent
+    PersonalComponent,
+    OfficeComponent
   ],
   imports: [
     BrowserModule,

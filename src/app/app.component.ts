@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   term = ''
   constructor(private toursService: ToursService, private authService: AuthService) {
     this.loading = true;
-    this.authService.checkAuthorized()
+    this.authService.checkUser()
       .then(authorized => {
         this.authorized.next(authorized);
       });
@@ -38,7 +38,7 @@ export class AppComponent implements OnInit {
 
   closeModal() {
     this.modalHeading = '';
-    this.authService.checkAuthorized()
+    this.authService.checkUser()
       .then(authorized => {
         this.authorized.next(authorized);
         this.loading = false;

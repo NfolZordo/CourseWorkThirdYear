@@ -1,5 +1,6 @@
 <app-header (loginClicked)="openModal()" 
 (registClicked)="openRegistModal()"
+(personalClicked)="openPersonalModal()"
 [authorized]="authorized"></app-header>
 <app-global-error></app-global-error>
 <div class="max-w-2xl container, mx-auto pt-5">
@@ -7,10 +8,11 @@
 
   <div *ngIf="tours$ | async as tours"> 
     <app-product *ngFor="let tour of tours; let i = index" [tour]="tour"></app-product>
-  </div>
+  </div>z
 
    <app-modal (closeClicked)="closeModal()" *ngIf="modalHeading !== '' " [title]="modalHeading" >
     <app-login *ngIf="modalHeading === 'Авторизація'"></app-login>
     <app-regist *ngIf="modalHeading === 'Регістрація'"></app-regist>
+    <app-office *ngIf="modalHeading === 'Особистий кабінет'"></app-office>
   </app-modal> 
 </div>
