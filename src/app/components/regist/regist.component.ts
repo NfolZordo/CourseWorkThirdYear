@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
-import { AuthService } from '../authorization/auth-service';
-import { ResponseData } from '../authorization/token-response';
+import { AuthService } from '../../services/authorization/auth-service';
+import { ResponseData } from '../../services/authorization/token-response';
 
 @Component({
   selector: 'app-regist',

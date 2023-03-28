@@ -1,6 +1,6 @@
 import { Component, Output, Input, EventEmitter, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { AuthService } from '../authorization/auth-service';
+import { AuthService } from '../../services/authorization/auth-service';
 
 @Component({
   selector: 'app-header',

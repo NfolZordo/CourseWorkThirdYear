@@ -1,6 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter  } from '@angular/core';
 import { HeaderComponent } from '../header/header.component';
-import { AuthService } from '../authorization/auth-service';
+import { AuthService } from '../../services/authorization/auth-service';
 
 @Component({
   selector: 'app-modal',

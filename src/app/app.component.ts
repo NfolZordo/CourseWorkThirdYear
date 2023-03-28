@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject, tap } from 'rxjs';
 import { ToursService } from './services/tour.service';
 import { ITour } from './models/tour';
-import { AuthService } from './components/authorization/auth-service';
+import { AuthService } from './services/authorization/auth-service';
 
 @Component({
   selector: 'app-root',
