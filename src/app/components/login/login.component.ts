@@ -37,7 +37,6 @@ export class LoginComponent implements OnInit {
   submit() {
     if (this.form.valid) {
       const data = this.form.value;
-      console.log(data);
       this.http.post<ResponseData>('http://localhost:8080/api/auth/authenticate',data,).subscribe (response => {
         const token = response.token;
         this.authService.setToken(token);

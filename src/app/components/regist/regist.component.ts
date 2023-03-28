@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/authorization/auth-service';
 import { ResponseData } from '../../services/authorization/token-response';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-regist',
@@ -56,13 +57,13 @@ export class RegistComponent implements OnInit {
     }
     ngOnInit(): void {
     }
-    constructor(private http:HttpClient, private authService: AuthService) { }
+    constructor(private http:HttpClient, private authService: AuthService, private modalComponent:ModalComponent) { }
   
     submit() {
       if (this.form.valid) {
         const data = this.form.value;
         this.http.post<ResponseData>('http://localhost:8080/api/auth/register', data).subscribe(response => {
-          console.log(response);
+          this.modalComponent.closeClicked.emit();
           const token = response.token;
           this.authService.setToken(token);
         });
