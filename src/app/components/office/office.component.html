@@ -1,11 +1,12 @@
 <div class="container">
     <div class="buttons-container">
-        <button class="button" *ngFor="let button of buttons">
+        <button class="button" *ngFor="let button of buttons" (click)="button.onclick()">
             {{ button.text }}
         </button>
     </div>
-    <div class="main-container">
-        <app-user-info></app-user-info>
+    <div class="main-container" class="w-full p-10">
+        <app-user-info *ngIf='navigation === "user-info"'></app-user-info>
+        <app-make-order *ngIf='navigation === "make-oredr"'></app-make-order>
     </div>
 </div>
 <!-- 

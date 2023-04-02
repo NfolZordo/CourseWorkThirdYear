@@ -1,1 +1,14 @@
-<p>make-order works!</p>
+<form action="" class="w-full">
+  <label for="start">Дата початку туру: </label>
+  <input type="date" id="start" name="trip-start" [value]="getNextDayISOString()" [min]="getNextDayISOString()">
+  <label for="tourName">Виберіть тур: </label>
+  <div id="tourName" *ngIf="tours$ | async as tours">
+    <select name="user_profile_color_1">
+      <option *ngFor="let tour of tours; let i = index" value={{tour.id}}>{{tour.name}} </option>
+    </select>
+  </div>
+  <label for="days">Кількість днів: </label>
+
+  <input type="number" id="days" class="border w-full h py-2 px-4 mb-2" min="3" max="31"
+    placeholder="Не менше 3 і не більше 31">
+</form>

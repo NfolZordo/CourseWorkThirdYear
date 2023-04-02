@@ -8,7 +8,7 @@
 
   <div *ngIf="tours$ | async as tours"> 
     <app-product *ngFor="let tour of tours; let i = index" [tour]="tour"></app-product>
-  </div>z
+  </div>
 
    <app-modal (closeClicked)="closeModal()" *ngIf="modalHeading !== '' " [title]="modalHeading" >
     <app-login *ngIf="modalHeading === 'Авторизація'"></app-login>

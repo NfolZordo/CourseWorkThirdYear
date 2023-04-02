@@ -9,20 +9,26 @@ import { UserData } from 'src/app/services/authorization/user-response';
 })
 export class OfficeComponent  implements OnInit  {
   userInfo: UserData;
+  navigation: string = "user-info";
   constructor(private authService:AuthService){
   }
   ngOnInit(): void {
     this.userInfo = this.authService.getUserInfo();
   }
   buttons = [
-    { text: 'Користувач', onclick: '' },
-    { text: 'Оформити замовлення' },
-    { text: 'Мої замовлення' },
-    { text: 'Button 4' },
-    { text: 'Button 5' }
+    { text: 'Користувач', onclick: this.openUserInfo.bind(this) },
+    { text: 'Оформити замовлення', onclick: this.openMakeOrder.bind(this)  },
+    { text: 'Мої замовлення', onclick:  this.openMakeOrder.bind(this)}
   ];
 
-  // onClick(button) {
-  //   console.log('Clicked ' + button.text);
-  // }
+  public openMakeOrder() {
+    console.log('openMakeOrder()')
+    this.navigation = "make-oredr";
+  }
+  public openUserInfo() {
+    console.log('openUserInfo()')
+    this.navigation = "user-info";
+  }
+
+
 }
