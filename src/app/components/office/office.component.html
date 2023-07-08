@@ -1,23 +1,12 @@
 <div class="container">
     <div class="buttons-container">
         <button class="button" *ngFor="let button of buttons" (click)="button.onclick()">
+            <img [src]="button.image" alt="Button Image" class="button-image">
             {{ button.text }}
-        </button>
+          </button>
     </div>
-    <div class="main-container" class="w-full p-10">
+    <div class="main-container">
         <app-user-info *ngIf='navigation === "user-info"'></app-user-info>
         <app-make-order *ngIf='navigation === "make-oredr"'></app-make-order>
     </div>
 </div>
-<!-- 
-  <form>
-    <input type="text" id="input1" placeholder="input1" name="input1" required>
-    
-    <input type="text" id="input2" placeholder="input2" name="input2" required>
-    
-    <input type="text" id="input3" placeholder="input3" name="input3" required>
-    
-    <input type="text" id="input4" placeholder="input4" name="input4" required>
-    
-    <button type="submit">Submit</button>
-  </form> -->

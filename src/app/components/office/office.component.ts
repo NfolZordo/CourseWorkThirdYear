@@ -16,9 +16,9 @@ export class OfficeComponent  implements OnInit  {
     this.userInfo = this.authService.getUserInfo();
   }
   buttons = [
-    { text: 'Користувач', onclick: this.openUserInfo.bind(this) },
-    { text: 'Оформити замовлення', onclick: this.openMakeOrder.bind(this)  },
-    { text: 'Мої замовлення', onclick:  this.openMakeOrder.bind(this)}
+    { text: 'Користувач', onclick: this.openUserInfo.bind(this), image: 'https://drive.google.com/uc?export=view&id=14nUue7b7LjDPb1ebCoTk33o0orSixd7S' },
+    { text: 'Оформити замовлення', onclick: this.openMakeOrder.bind(this), image: 'https://drive.google.com/uc?export=view&id=1d_uuFqH9dYCmddfOdkHVek16VaadSYDn' },
+    { text: 'Мої замовлення', onclick: this.openMakeOrder.bind(this), image: 'https://drive.google.com/uc?export=view&id=1X5i48agfN7dOHUcFKPL1yKT14_m0MOgx' }
   ];
 
   public openMakeOrder() {
@@ -29,6 +29,4 @@ export class OfficeComponent  implements OnInit  {
     console.log('openUserInfo()')
     this.navigation = "user-info";
   }
-
-
 }
